@@ -1,5 +1,7 @@
+// src/App.js
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
+import { Flex } from "@react-native-material/core"; // Use Flex instead of Container
 import Header from './components/Header';
 import TaskList from './components/TaskList';
 import axios from 'axios';
@@ -31,13 +33,19 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
-      <TaskList tasks={tasks} onToggleTask={toggleTaskCompletion} />
+      <Flex>
+        <Header />
+        <TaskList tasks={tasks} onToggleTask={toggleTaskCompletion} />
+      </Flex>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  appBarContainer: {
+    width: '10%',
+    alignSelf: 'center',
+  },
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
